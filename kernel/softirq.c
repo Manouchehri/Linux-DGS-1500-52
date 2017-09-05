@@ -135,7 +135,7 @@ void local_bh_enable(void)
 
 	WARN_ON_ONCE(in_irq());
 #endif
-	WARN_ON_ONCE(irqs_disabled());
+/*IgorP*///	WARN_ON_ONCE(irqs_disabled());
 
 #ifdef CONFIG_TRACE_IRQFLAGS
 	local_irq_save(flags);
@@ -202,7 +202,11 @@ EXPORT_SYMBOL(local_bh_enable_ip);
  * we want to handle softirqs as soon as possible, but they
  * should not be able to lock up the box.
  */
+#ifdef CONFIG_MV_REAL_TIME
+#define MAX_SOFTIRQ_RESTART 2
+#else
 #define MAX_SOFTIRQ_RESTART 10
+#endif
 
 asmlinkage void __do_softirq(void)
 {
@@ -216,6 +220,11 @@ asmlinkage void __do_softirq(void)
 
 	__local_bh_disable((unsigned long)__builtin_return_address(0));
 	trace_softirq_enter();
+
+#ifdef CONFIG_MV_REAL_TIME
+	if (has_rt_policy(current))
+		goto out;
+#endif /* CONFIG_MV_REAL_TIME */
 
 	cpu = smp_processor_id();
 restart:
@@ -241,6 +250,9 @@ restart:
 	if (pending && --max_restart)
 		goto restart;
 
+#ifdef CONFIG_MV_REAL_TIME
+out:
+#endif
 	if (pending)
 		wakeup_softirqd();
 

@@ -230,7 +230,7 @@
 *  - Following Documentation/DocBook/kernel-locking.pdf no spin locks
 *    are held when calling copy_to/from_user or printk.
 *    
-*  $Id: digi_acceleport.c,v 1.80.1.2 2000/11/02 05:45:08 root Exp $
+*  $Id: digi_acceleport.c,v 1.1.1.1 2010/10/11 06:16:44 nelon Exp $
 */
 
 #include <linux/kernel.h>

@@ -6,7 +6,7 @@
  *
  * Generic platform device based RAM map
  *
- * $Id: plat-ram.h,v 1.2 2005/01/24 00:37:40 bjd Exp $
+ * $Id: plat-ram.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as

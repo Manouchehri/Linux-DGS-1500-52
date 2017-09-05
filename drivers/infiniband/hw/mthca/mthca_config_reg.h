@@ -30,7 +30,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id: mthca_config_reg.h 1349 2004-12-16 21:09:43Z roland $
+ * $Id: mthca_config_reg.h,v 1.1.1.1 2010/10/11 06:16:41 nelon Exp $
  */
 
 #ifndef MTHCA_CONFIG_REG_H

@@ -171,6 +171,7 @@ extern void __pgd_error(const char *file, int line, unsigned long val);
 #define L_PTE_EXEC		(1 << 6)
 #define L_PTE_DIRTY		(1 << 7)
 #define L_PTE_SHARED		(1 << 10)	/* shared(v6), coherent(xsc3) */
+#define L_PTE_MT_MASK		(0x0f << 2)
 
 #ifndef __ASSEMBLY__
 

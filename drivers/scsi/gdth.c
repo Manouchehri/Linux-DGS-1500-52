@@ -30,6 +30,9 @@
  * Linux kernel 2.4.x, 2.6.x supported                                  *
  *                                                                      *
  * $Log: gdth.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:42  nelon
+ * no message
+ *
  * Revision 1.74  2006/04/10 13:44:47  achim
  * Community changes for 2.6.x
  * Kernel 2.2.x no longer supported

@@ -31,7 +31,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id: ib_sa.h 2811 2005-07-06 18:11:43Z halr $
+ * $Id: ib_sa.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  */
 
 #ifndef IB_SA_H

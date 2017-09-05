@@ -26,11 +26,7 @@
 #include <net/netfilter/nf_nat_helper.h>
 #include <linux/netfilter_ipv4/ip_tables.h>
 
-#if 0
-#define DEBUGP printk
-#else
 #define DEBUGP(format, args...)
-#endif
 
 #ifdef CONFIG_XFRM
 static void nat_decode_session(struct sk_buff *skb, struct flowi *fl)
@@ -141,8 +137,7 @@ nf_nat_fn(unsigned int hooknum,
 				/* LOCAL_IN hook doesn't have a chain!  */
 				ret = alloc_null_binding(ct, hooknum);
 			else
-				ret = nf_nat_rule_find(pskb, hooknum, in, out,
-						       ct);
+				ret = nf_nat_rule_find(pskb, hooknum, in, out, ct);
 
 			if (ret != NF_ACCEPT) {
 				return ret;

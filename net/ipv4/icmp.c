@@ -3,7 +3,7 @@
  *
  *		Alan Cox, <alan@redhat.com>
  *
- *	Version: $Id: icmp.c,v 1.85 2002/02/01 22:01:03 davem Exp $
+ *	Version: $Id: icmp.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  *	This program is free software; you can redistribute it and/or
  *	modify it under the terms of the GNU General Public License

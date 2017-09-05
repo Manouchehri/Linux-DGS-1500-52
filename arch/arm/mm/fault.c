@@ -111,6 +111,16 @@ __do_user_fault(struct task_struct *tsk, unsigned long addr,
 {
 	struct siginfo si;
 
+#ifdef CAMEO_STACKTRACE_WANTED
+    /* @@Cameo, Carlyle Chen, 2010/4/1, display PID, PC register and LR register only */
+    Cameo_show_briefmsg(regs);
+#else
+    /* @@Cameo, Jane, 2009/07/10 Display sgementation fault information.*/
+    printk( "%s: unhandled page fault (%d) at 0x%08lx, code 0x%03x\n",
+ 	       tsk->comm, sig, addr, fsr);
+    show_pte(tsk->mm, addr);
+    show_regs(regs);
+
 #ifdef CONFIG_DEBUG_USER
 	if (user_debug & UDBG_SEGV) {
 		printk(KERN_DEBUG "%s: unhandled page fault (%d) at 0x%08lx, code 0x%03x\n",
@@ -119,6 +129,7 @@ __do_user_fault(struct task_struct *tsk, unsigned long addr,
 		show_regs(regs);
 	}
 #endif
+#endif /* end of CAMEO_STACKTRACE_WANTED */
 
 	tsk->thread.address = addr;
 	tsk->thread.error_code = fsr;

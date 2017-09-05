@@ -1,7 +1,7 @@
 /*
  * Flash memory access on 4G Systems MTX-1 boards
  *
- * $Id: mtx-1_flash.c,v 1.2 2005/11/07 11:14:27 gleixner Exp $
+ * $Id: mtx-1_flash.c,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
  *
  * (C) 2005 Bruno Randolf <bruno.randolf@4g-systems.biz>
  * (C) 2005 Jörn Engel <joern@wohnheim.fh-wedel.de>

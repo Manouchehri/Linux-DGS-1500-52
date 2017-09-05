@@ -15,7 +15,7 @@
     The default values used for PlanB are my mistakes.
 */
 
-/* $Id: saa7196.h,v 1.5 1999/03/26 23:28:47 mlan Exp $ */
+/* $Id: saa7196.h,v 1.1.1.1 2010/10/11 06:16:41 nelon Exp $ */
 
 #ifndef _SAA7196_H_
 #define _SAA7196_H_

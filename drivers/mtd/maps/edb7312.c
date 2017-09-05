@@ -1,5 +1,5 @@
 /*
- * $Id: edb7312.c,v 1.14 2005/11/07 11:14:27 gleixner Exp $
+ * $Id: edb7312.c,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
  *
  * Handle mapping of the NOR flash on Cogent EDB7312 boards
  *

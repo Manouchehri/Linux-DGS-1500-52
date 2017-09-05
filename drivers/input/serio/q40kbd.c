@@ -1,5 +1,5 @@
 /*
- * $Id: q40kbd.c,v 1.12 2002/02/02 22:26:44 vojtech Exp $
+ * $Id: q40kbd.c,v 1.1.1.1 2010/10/11 06:16:43 nelon Exp $
  *
  *  Copyright (c) 2000-2001 Vojtech Pavlik
  *

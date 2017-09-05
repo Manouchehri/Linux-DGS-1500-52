@@ -6,7 +6,7 @@
  *
  * (C) 2000 Red Hat. GPLd.
  *
- * $Id: flashchip.h,v 1.18 2005/11/07 11:14:54 gleixner Exp $
+ * $Id: flashchip.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $
  *
  */
 

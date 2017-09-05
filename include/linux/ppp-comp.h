@@ -24,7 +24,7 @@
  * OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS,
  * OR MODIFICATIONS.
  *
- * $Id: ppp-comp.h,v 1.6 1997/11/27 06:04:44 paulus Exp $
+ * $Id: ppp-comp.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  */
 
 /*

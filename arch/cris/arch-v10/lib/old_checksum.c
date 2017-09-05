@@ -1,4 +1,4 @@
-/* $Id: old_checksum.c,v 1.3 2003/10/27 08:04:32 starvik Exp $
+/* $Id: old_checksum.c,v 1.1.1.1 2010/10/11 06:16:29 nelon Exp $
  *
  * INET		An implementation of the TCP/IP protocol suite for the LINUX
  *		operating system.  INET is implemented using the  BSD Socket

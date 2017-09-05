@@ -1,4 +1,4 @@
-/* $Id: lsu.h,v 1.2 1997/04/04 00:50:22 davem Exp $ */
+/* $Id: lsu.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $ */
 #ifndef _SPARC64_LSU_H
 #define _SPARC64_LSU_H
 

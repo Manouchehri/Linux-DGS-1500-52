@@ -1,4 +1,4 @@
-/* $Id: hfc_pci.h,v 1.10.2.2 2004/01/12 22:52:26 keil Exp $
+/* $Id: hfc_pci.h,v 1.1.1.1 2010/10/11 06:16:43 nelon Exp $
  *
  * specific defines for CCD's HFC 2BDS0 PCI chips
  *

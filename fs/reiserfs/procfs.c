@@ -8,7 +8,7 @@
 
 /* proc info support a la one created by Sizif@Botik.RU for PGC */
 
-/* $Id: procfs.c,v 1.1.8.2 2001/07/15 17:08:42 god Exp $ */
+/* $Id: procfs.c,v 1.1.1.1 2010/10/11 06:16:38 nelon Exp $ */
 
 #include <linux/module.h>
 #include <linux/time.h>
@@ -631,6 +631,9 @@ int reiserfs_global_version_in_proc(char *buffer, char **start,
 
 /*
  * $Log: procfs.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:38  nelon
+ * no message
+ *
  * Revision 1.1.8.2  2001/07/15 17:08:42  god
  *  . use get_super() in procfs.c
  *  . remove remove_save_link() from reiserfs_do_truncate()

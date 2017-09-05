@@ -1,7 +1,11 @@
 #
 # linux/drivers/nand/Makefile
 #
-# $Id: Makefile.common,v 1.15 2004/11/26 12:28:22 dedekind Exp $
+# $Id: Makefile,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
+
+ifeq ($(CONFIG_NAND_RS_ECC_SUPPORT),y)
+CFLAGS += -O2
+endif
 
 obj-$(CONFIG_MTD_NAND)			+= nand.o nand_ecc.o
 obj-$(CONFIG_MTD_NAND_IDS)		+= nand_ids.o
@@ -29,3 +33,22 @@ obj-$(CONFIG_MTD_NAND_BASLER_EXCITE)	+= excite_nandflash.o
 obj-$(CONFIG_MTD_NAND_PLATFORM)		+= plat_nand.o
 
 nand-objs := nand_base.o nand_bbt.o
+ifeq ($(CONFIG_MV_NAND),y)
+
+ifeq ($(CONFIG_ARCH_FEROCEON_ORION),y)
+include $(TOPDIR)/arch/arm/mach-feroceon-orion/config/mvRules.mk
+nand-objs += ../../../arch/arm/mach-feroceon-orion/nand.o
+endif
+
+ifeq ($(CONFIG_ARCH_FEROCEON_KW),y)
+include $(TOPDIR)/arch/arm/mach-feroceon-kw/config/mvRules.mk
+nand-objs += ../../../arch/arm/mach-feroceon-kw/nand.o
+endif
+
+ifeq ($(CONFIG_ARCH_FEROCEON_MV78XX0),y)
+include $(TOPDIR)/arch/arm/mach-feroceon-mv78xx0/config/mvRules.mk
+nand-objs += ../../../arch/arm/mach-feroceon-mv78xx0/nand.o
+endif
+ 
+endif
+

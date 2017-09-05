@@ -1,7 +1,7 @@
 /*
  * IPVS:        Least-Connection Scheduling module
  *
- * Version:     $Id: ip_vs_lc.c,v 1.10 2003/04/18 09:03:16 wensong Exp $
+ * Version:     $Id: ip_vs_lc.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  * Authors:     Wensong Zhang <wensong@linuxvirtualserver.org>
  *

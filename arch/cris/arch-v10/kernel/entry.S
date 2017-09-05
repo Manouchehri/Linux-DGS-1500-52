@@ -1,4 +1,4 @@
-/* $Id: entry.S,v 1.28 2005/06/20 05:06:30 starvik Exp $
+/* $Id: entry.S,v 1.1.1.1 2010/10/11 06:16:29 nelon Exp $
  *
  *  linux/arch/cris/entry.S
  *
@@ -7,6 +7,9 @@
  *  Authors:	Bjorn Wesen (bjornw@axis.com)
  *
  *  $Log: entry.S,v $
+ *  Revision 1.1.1.1  2010/10/11 06:16:29  nelon
+ *  no message
+ *
  *  Revision 1.28  2005/06/20 05:06:30  starvik
  *  Remove unnecessary diff to kernel.org tree
  *

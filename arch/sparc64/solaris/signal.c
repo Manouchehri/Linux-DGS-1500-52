@@ -1,4 +1,4 @@
-/* $Id: signal.c,v 1.7 2000/09/05 21:44:54 davem Exp $
+/* $Id: signal.c,v 1.1.1.1 2010/10/11 06:16:32 nelon Exp $
  * signal.c: Signal emulation for Solaris
  *
  * Copyright (C) 1997 Jakub Jelinek (jj@sunsite.mff.cuni.cz)

@@ -1,4 +1,4 @@
-/* $Id: sdiv.S,v 1.6 1996/10/02 17:37:00 davem Exp $
+/* $Id: sdiv.S,v 1.1.1.1 2010/10/11 06:16:30 nelon Exp $
  * sdiv.S:      This routine was taken from glibc-1.09 and is covered
  *              by the GNU Library General Public License Version 2.
  */

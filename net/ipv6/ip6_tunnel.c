@@ -6,7 +6,7 @@
  *	Ville Nuorvala		<vnuorval@tcs.hut.fi>
  *	Yasuyuki Kozakai	<kozakai@linux-ipv6.org>
  *
- *	$Id$
+ *	$Id: ip6_tunnel.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  *      Based on:
  *      linux/net/ipv6/sit.c and linux/net/ipv4/ipip.c

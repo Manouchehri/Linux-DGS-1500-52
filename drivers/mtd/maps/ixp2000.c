@@ -1,5 +1,5 @@
 /*
- * $Id: ixp2000.c,v 1.9 2005/11/07 11:14:27 gleixner Exp $
+ * $Id: ixp2000.c,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
  *
  * drivers/mtd/maps/ixp2000.c
  *

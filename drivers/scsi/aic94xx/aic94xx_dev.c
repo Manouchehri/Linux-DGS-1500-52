@@ -22,7 +22,7 @@
  * along with the aic94xx driver; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * $Id: //depot/aic94xx/aic94xx_dev.c#21 $
+ * $Id: aic94xx_dev.c,v 1.1.1.1 2010/10/11 06:16:42 nelon Exp $
  */
 
 #include "aic94xx.h"

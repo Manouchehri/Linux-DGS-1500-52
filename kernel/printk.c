@@ -513,6 +513,19 @@ asmlinkage int printk(const char *fmt, ...)
 /* cpu currently holding logbuf_lock */
 static volatile unsigned int printk_cpu = UINT_MAX;
 
+static int printk_debug_start = -1;
+
+static inline void printk_debug_char(char *p)
+{
+  while ((*(char *)(0xf1012014) & 0x60 )!= 0x60);
+  *(char *)(0xf1012000) = *p;
+  if (*p == '\n')
+  {
+    while ((*(char *)(0xf1012014) & 0x60 )!= 0x60);
+    *(char *)(0xf1012000) = '\r';
+  }                
+}
+
 asmlinkage int vprintk(const char *fmt, va_list args)
 {
 	unsigned long flags;
@@ -520,6 +533,8 @@ asmlinkage int vprintk(const char *fmt, va_list args)
 	char *p;
 	static char printk_buf[1024];
 	static int log_level_unknown = 1;
+  static int entry = 0;
+	char skip = 0;
 
 	preempt_disable();
 	if (unlikely(oops_in_progress) && printk_cpu == smp_processor_id())
@@ -588,7 +603,46 @@ asmlinkage int vprintk(const char *fmt, va_list args)
 			if (!*p)
 				break;
 		}
-		emit_log_char(*p);
+
+    if((printk_debug_start < 0) || (entry < printk_debug_start))
+    {
+      entry++;
+      emit_log_char(*p);
+    }
+    
+		else
+		{
+			if(skip) 
+			{
+				if (*p == '>')
+					skip = 0;
+			}
+			else 
+			{
+				if (*p == '<')
+					skip = 1;
+				else
+				{
+          {
+            static int first_time = 1;
+            if (first_time)
+            {
+              char buf[100];
+              char *p;
+
+              first_time = 0;
+              sprintf(buf, "\n\nprintk_debug printing. starting point=%d\n\n", 
+                      printk_debug_start);
+              
+              for (p = buf; *p; p++)
+                printk_debug_char(p);
+            }
+          }     
+          printk_debug_char(p);
+				}
+			}
+		}
+		
 		if (*p == '\n')
 			log_level_unknown = 1;
 	}
@@ -633,6 +687,14 @@ asmlinkage int vprintk(const char *fmt, va_list args)
 	preempt_enable();
 	return printed_len;
 }
+
+static int __init printk_debug_start_setup(char *str)
+{
+	get_option(&str, &printk_debug_start);
+	return 1;
+}
+__setup("printk_debug_start=", printk_debug_start_setup);
+
 EXPORT_SYMBOL(printk);
 EXPORT_SYMBOL(vprintk);
 

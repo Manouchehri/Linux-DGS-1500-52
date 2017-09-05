@@ -28,6 +28,9 @@
 
 /*
  * $Log: NCR5380.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:42  nelon
+ * no message
+ *
 
  * Revision 1.10 1998/9/2	Alan Cox
  *				(alan@redhat.com)

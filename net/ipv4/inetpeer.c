@@ -3,7 +3,7 @@
  *
  *  This source is covered by the GNU GPL, the same as all kernel sources.
  *
- *  Version:	$Id: inetpeer.c,v 1.7 2001/09/20 21:22:50 davem Exp $
+ *  Version:	$Id: inetpeer.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  *  Authors:	Andrey V. Savochkin <saw@msu.ru>
  */

@@ -46,7 +46,10 @@
  */
 
 /*
- * $Log: sun3_NCR5380.c,v $
+ * $Log: sun3_scsi.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:42  nelon
+ * no message
+ *
  */
 
 #define AUTOSENSE

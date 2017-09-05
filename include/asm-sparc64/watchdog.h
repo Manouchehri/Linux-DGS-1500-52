@@ -1,4 +1,4 @@
-/* $Id: watchdog.h,v 1.1 2001/01/18 04:47:44 davem Exp $
+/* $Id: watchdog.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  *
  * watchdog - Driver interface for the hardware watchdog timers
  * present on Sun Microsystems boardsets

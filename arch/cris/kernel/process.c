@@ -1,4 +1,4 @@
-/* $Id: process.c,v 1.21 2005/03/04 08:16:17 starvik Exp $
+/* $Id: process.c,v 1.1.1.1 2010/10/11 06:16:29 nelon Exp $
  * 
  *  linux/arch/cris/kernel/process.c
  *
@@ -8,6 +8,9 @@
  *  Authors:   Bjorn Wesen (bjornw@axis.com)
  *
  *  $Log: process.c,v $
+ *  Revision 1.1.1.1  2010/10/11 06:16:29  nelon
+ *  no message
+ *
  *  Revision 1.21  2005/03/04 08:16:17  starvik
  *  Merge of Linux 2.6.11.
  *

@@ -1,7 +1,7 @@
 /*
    Common Flash Interface probe code.
    (C) 2000 Red Hat. GPL'd.
-   $Id: cfi_probe.c,v 1.86 2005/11/29 14:48:31 gleixner Exp $
+   $Id: cfi_probe.c,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
 */
 
 #include <linux/module.h>

@@ -2,7 +2,7 @@
  * ichxrom.c
  *
  * Normal mappings of chips in physical memory
- * $Id: ichxrom.c,v 1.19 2005/11/07 11:14:27 gleixner Exp $
+ * $Id: ichxrom.c,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
  */
 
 #include <linux/module.h>

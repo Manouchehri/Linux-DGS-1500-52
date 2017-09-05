@@ -82,6 +82,12 @@ ENTRY(stext)
 	bl	__lookup_processor_type		@ r5=procinfo r9=cpuid
 	movs	r10, r5				@ invalid processor (r5=0)?
 	beq	__error_p			@ yes, error 'p'
+#ifdef CONFIG_MV78XX0_Z0
+	/*Hack for legacy Z0 board*/
+	ldr   r0, =0x20e
+	cmp   r1, r0
+	moveq r1, #0x210  	
+#endif
 	bl	__lookup_machine_type		@ r5=machinfo
 	movs	r8, r5				@ invalid machine (r5=0)?
 	beq	__error_a			@ yes, error 'a'
@@ -190,6 +196,9 @@ __turn_mmu_on:
 	mov	r0, r0
 	mcr	p15, 0, r0, c1, c0, 0		@ write control reg
 	mrc	p15, 0, r3, c0, c0, 0		@ read id reg
+    mov	r3, r3 @Ref # FE-22040 RES-CPU150
+	mov	r3, r3
+	mov	r3, r3
 	mov	r3, r3
 	mov	r3, r3
 	mov	pc, r13

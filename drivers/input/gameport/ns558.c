@@ -1,5 +1,5 @@
 /*
- * $Id: ns558.c,v 1.43 2002/01/24 19:23:21 vojtech Exp $
+ * $Id: ns558.c,v 1.1.1.1 2010/10/11 06:16:43 nelon Exp $
  *
  *  Copyright (c) 1999-2001 Vojtech Pavlik
  *  Copyright (c) 1999 Brian Gerst

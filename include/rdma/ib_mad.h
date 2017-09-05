@@ -33,7 +33,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id: ib_mad.h 5596 2006-03-03 01:00:07Z sean.hefty $
+ * $Id: ib_mad.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  */
 
 #if !defined( IB_MAD_H )

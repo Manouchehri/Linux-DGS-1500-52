@@ -12,6 +12,9 @@
  *    init_etrax_debug()
  *
  * $Log: debugport.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:29  nelon
+ * no message
+ *
  * Revision 1.27  2005/06/10 10:34:14  starvik
  * Real console support
  *

@@ -22,6 +22,9 @@
  * This version supports shared IRQ's (only for PCI boards).
  *
  * $Log: cyclades.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:45  nelon
+ * no message
+ *
  * Prevent users from opening non-existing Z ports.
  *
  * Revision 2.3.2.8   2000/07/06 18:14:16 ivan

@@ -129,6 +129,9 @@
  *                                unsigned int value);
  * 	void add_interrupt_randomness(int irq);
  *
+ *      void random_input_words(__u32 *buf, size_t wordcount, int ent_count)
+ *      int random_input_wait(void);
+ *
  * add_input_randomness() uses the input layer interrupt timing, as well as
  * the event type information from the hardware.
  *
@@ -139,6 +142,13 @@
  * regular, and hence predictable to an attacker.  Disk interrupts are
  * a better measure, since the timing of the disk interrupts are more
  * unpredictable.
+ *
+ * random_input_words() just provides a raw block of entropy to the input
+ * pool, such as from a hardware entropy generator.
+ *
+ * random_input_wait() suspends the caller until such time as the
+ * entropy pool falls below the write threshold, and returns a count of how
+ * much entropy (in bits) is needed to sustain the pool.
  *
  * All of these routines try to estimate how many bits of randomness a
  * particular randomness source.  They do this by keeping track of the
@@ -290,33 +300,6 @@ static struct poolinfo {
 	{ 128,	103,	76,	51,	25,	1 },
 	/* x^32 + x^26 + x^20 + x^14 + x^7 + x + 1 -- 15 */
 	{ 32,	26,	20,	14,	7,	1 },
-#if 0
-	/* x^2048 + x^1638 + x^1231 + x^819 + x^411 + x + 1  -- 115 */
-	{ 2048,	1638,	1231,	819,	411,	1 },
-
-	/* x^1024 + x^817 + x^615 + x^412 + x^204 + x + 1 -- 290 */
-	{ 1024,	817,	615,	412,	204,	1 },
-
-	/* x^1024 + x^819 + x^616 + x^410 + x^207 + x^2 + 1 -- 115 */
-	{ 1024,	819,	616,	410,	207,	2 },
-
-	/* x^512 + x^411 + x^308 + x^208 + x^104 + x + 1 -- 225 */
-	{ 512,	411,	308,	208,	104,	1 },
-
-	/* x^512 + x^409 + x^307 + x^206 + x^102 + x^2 + 1 -- 95 */
-	{ 512,	409,	307,	206,	102,	2 },
-	/* x^512 + x^409 + x^309 + x^205 + x^103 + x^2 + 1 -- 95 */
-	{ 512,	409,	309,	205,	103,	2 },
-
-	/* x^256 + x^205 + x^155 + x^101 + x^52 + x + 1 -- 125 */
-	{ 256,	205,	155,	101,	52,	1 },
-
-	/* x^128 + x^103 + x^78 + x^51 + x^27 + x^2 + 1 -- 70 */
-	{ 128,	103,	78,	51,	27,	2 },
-
-	/* x^64 + x^52 + x^39 + x^26 + x^14 + x + 1 -- 15 */
-	{ 64,	52,	39,	26,	14,	1 },
-#endif
 };
 
 #define POOLBITS	poolwords*32
@@ -371,19 +354,7 @@ static struct poolinfo {
 static DECLARE_WAIT_QUEUE_HEAD(random_read_wait);
 static DECLARE_WAIT_QUEUE_HEAD(random_write_wait);
 
-#if 0
-static int debug = 0;
-module_param(debug, bool, 0644);
-#define DEBUG_ENT(fmt, arg...) do { if (debug) \
-	printk(KERN_DEBUG "random %04d %04d %04d: " \
-	fmt,\
-	input_pool.entropy_count,\
-	blocking_pool.entropy_count,\
-	nonblocking_pool.entropy_count,\
-	## arg); } while (0)
-#else
 #define DEBUG_ENT(fmt, arg...) do {} while (0)
-#endif
 
 /**********************************************************************
  *
@@ -670,6 +641,61 @@ void add_disk_randomness(struct gendisk *disk)
 
 EXPORT_SYMBOL(add_disk_randomness);
 #endif
+
+/*
+ * random_input_words - add bulk entropy to pool
+ *
+ * @buf: buffer to add
+ * @wordcount: number of __u32 words to add
+ * @ent_count: total amount of entropy (in bits) to credit
+ *
+ * this provides bulk input of entropy to the input pool
+ *
+ */
+void random_input_words(__u32 *buf, size_t wordcount, int ent_count)
+{
+	add_entropy_words(&input_pool, buf, wordcount);
+
+	credit_entropy_store(&input_pool, ent_count);
+
+	DEBUG_ENT("crediting %d bits => %d\n",
+		  ent_count, input_pool.entropy_count);
+	/*
+	 * Wake up waiting processes if we have enough
+	 * entropy.
+	 */
+	if (input_pool.entropy_count >= random_read_wakeup_thresh)
+		wake_up_interruptible(&random_read_wait);
+}
+EXPORT_SYMBOL(random_input_words);
+
+/*
+ * random_input_wait - wait until random needs entropy
+ *
+ * this function sleeps until the /dev/random subsystem actually
+ * needs more entropy, and then return the amount of entropy
+ * that it would be nice to have added to the system.
+ */
+int random_input_wait(void)
+{
+	int count;
+
+	wait_event_interruptible(random_write_wait, 
+			 input_pool.entropy_count < random_write_wakeup_thresh);
+
+	count = random_write_wakeup_thresh - input_pool.entropy_count;
+
+        /* likely we got woken up due to a signal */
+	if (count < 0) count = random_read_wakeup_thresh; 
+
+	DEBUG_ENT("requesting %d bits from input_wait()er %d<%d\n",
+		  count,
+		  input_pool.entropy_count, random_write_wakeup_thresh);
+
+	return count;
+}
+EXPORT_SYMBOL(random_input_wait);
+
 
 #define EXTRACT_SIZE 10
 
@@ -1550,17 +1576,11 @@ __u32 secure_tcp_sequence_number(__be32 saddr, __be32 daddr,
 	 *	As close as possible to RFC 793, which
 	 *	suggests using a 250 kHz clock.
 	 *	Further reading shows this assumes 2 Mb/s networks.
-	 *	For 10 Mb/s Ethernet, a 1 MHz clock is appropriate.
-	 *	For 10 Gb/s Ethernet, a 1 GHz clock should be ok, but
-	 *	we also need to limit the resolution so that the u32 seq
-	 *	overlaps less than one time per MSL (2 minutes).
-	 *	Choosing a clock of 64 ns period is OK. (period of 274 s)
+	 *	For 10 Gb/s Ethernet, a 1 GHz clock is appropriate.
+	 *	That's funny, Linux has one built in!  Use it!
+	 *	(Networks are faster now - should this be increased?)
 	 */
-	seq += ktime_get_real().tv64 >> 6;
-#if 0
-	printk("init_seq(%lx, %lx, %d, %d) = %d\n",
-	       saddr, daddr, sport, dport, seq);
-#endif
+	seq += ktime_get_real().tv64;
 	return seq;
 }
 
@@ -1618,10 +1638,6 @@ u64 secure_dccp_sequence_number(__be32 saddr, __be32 daddr,
 
 	seq += ktime_get_real().tv64;
 	seq &= (1ull << 48) - 1;
-#if 0
-	printk("dccp init_seq(%lx, %lx, %d, %d) = %d\n",
-	       saddr, daddr, sport, dport, seq);
-#endif
 	return seq;
 }
 

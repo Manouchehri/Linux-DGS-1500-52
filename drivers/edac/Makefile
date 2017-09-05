@@ -5,7 +5,7 @@
 # This file may be distributed under the terms of the
 # GNU General Public License.
 #
-# $Id: Makefile,v 1.4.2.3 2005/07/08 22:05:38 dsp_llnl Exp $
+# $Id: Makefile,v 1.1.1.1 2010/10/11 06:16:40 nelon Exp $
 
 
 obj-$(CONFIG_EDAC_MM_EDAC)		+= edac_mc.o

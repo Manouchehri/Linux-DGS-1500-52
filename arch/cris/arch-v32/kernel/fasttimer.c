@@ -1,10 +1,13 @@
-/* $Id: fasttimer.c,v 1.11 2005/01/04 11:15:46 starvik Exp $
+/* $Id: fasttimer.c,v 1.1.1.1 2010/10/11 06:16:29 nelon Exp $
  * linux/arch/cris/kernel/fasttimer.c
  *
  * Fast timers for ETRAX FS
  * This may be useful in other OS than Linux so use 2 space indentation...
  *
  * $Log: fasttimer.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:29  nelon
+ * no message
+ *
  * Revision 1.11  2005/01/04 11:15:46  starvik
  * Don't share timer IRQ.
  *

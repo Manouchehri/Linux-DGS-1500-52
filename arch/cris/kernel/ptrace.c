@@ -8,6 +8,9 @@
  * Authors:   Bjorn Wesen
  *
  * $Log: ptrace.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:29  nelon
+ * no message
+ *
  * Revision 1.10  2004/09/22 11:50:01  orjanf
  * * Moved get_reg/put_reg to arch-specific files.
  * * Added functions to access debug registers (CRISv32).

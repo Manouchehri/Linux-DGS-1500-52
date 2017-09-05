@@ -2,6 +2,8 @@
 # Makefile for the linux arm-specific parts of the memory manager.
 #
 
+include $(TOPDIR)/arch/arm/mach-feroceon-kw/config/mvRules.mk
+
 obj-y				:= consistent.o extable.o fault.o init.o \
 				   iomap.o
 
@@ -36,6 +38,7 @@ obj-$(CONFIG_CPU_CACHE_V7)	+= cache-v7.o
 obj-$(CONFIG_CPU_COPY_V3)	+= copypage-v3.o
 obj-$(CONFIG_CPU_COPY_V4WT)	+= copypage-v4wt.o
 obj-$(CONFIG_CPU_COPY_V4WB)	+= copypage-v4wb.o
+obj-$(CONFIG_ARCH_FEROCEON)     += copypage-mrvl.o
 obj-$(CONFIG_CPU_COPY_V6)	+= copypage-v6.o context.o
 obj-$(CONFIG_CPU_SA1100)	+= copypage-v4mc.o
 obj-$(CONFIG_CPU_XSCALE)	+= copypage-xscale.o

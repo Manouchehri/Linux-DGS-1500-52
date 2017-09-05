@@ -1,5 +1,5 @@
 /*
- * $Id: pcibios.c,v 1.1 2001/08/24 12:38:19 dwmw2 Exp $
+ * $Id: pcibios.c,v 1.1.1.1 2010/10/11 06:16:29 nelon Exp $
  *
  * arch/sh/kernel/pcibios.c
  *

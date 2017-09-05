@@ -5,7 +5,7 @@
  * Copyright (C) 2004 by FS Forth-Systeme GmbH
  * All rights reserved.
  *
- * $Id: mach-smdk2410.c,v 1.1 2004/05/11 14:15:38 mpietrek Exp $
+ * $Id: mach-smdk2410.c,v 1.1.1.1 2010/10/11 06:16:31 nelon Exp $
  * @Author: Jonas Dietsche
  *
  * This program is free software; you can redistribute it and/or

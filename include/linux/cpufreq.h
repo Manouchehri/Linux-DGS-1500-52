@@ -5,7 +5,7 @@
  *            (C) 2002 - 2003 Dominik Brodowski <linux@brodo.de>
  *            
  *
- * $Id: cpufreq.h,v 1.36 2003/01/20 17:31:48 db Exp $
+ * $Id: cpufreq.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as

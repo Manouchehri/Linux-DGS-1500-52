@@ -1,4 +1,4 @@
-/* $Id: atomic.h,v 1.22 2001/07/11 23:56:07 davem Exp $
+/* $Id: atomic.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  * atomic.h: Thankfully the V9 is at least reasonable for this
  *           stuff.
  *

@@ -1,4 +1,4 @@
-/* $Id: namei.h,v 1.1 1996/12/13 14:48:21 jj Exp $
+/* $Id: namei.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  * linux/include/asm-parisc/namei.h
  *
  * Included from linux/fs/namei.c

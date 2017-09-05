@@ -1,4 +1,4 @@
-/* $Id: fasttimer.h,v 1.3 2004/05/14 10:19:19 starvik Exp $
+/* $Id: fasttimer.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  * linux/include/asm-cris/fasttimer.h
  *
  * Fast timers for ETRAX100LX

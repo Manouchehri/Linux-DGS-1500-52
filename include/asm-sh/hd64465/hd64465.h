@@ -1,7 +1,7 @@
 #ifndef _ASM_SH_HD64465_
 #define _ASM_SH_HD64465_ 1
 /*
- * $Id: hd64465.h,v 1.3 2003/05/04 19:30:15 lethal Exp $
+ * $Id: hd64465.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $
  *
  * Hitachi HD64465 companion chip support
  *

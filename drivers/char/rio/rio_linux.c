@@ -26,7 +26,10 @@
  *      USA.
  *
  * Revision history:
- * $Log: rio.c,v $
+ * $Log: rio_linux.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:45  nelon
+ * no message
+ *
  * Revision 1.1  1999/07/11 10:13:54  wolff
  * Initial revision
  *

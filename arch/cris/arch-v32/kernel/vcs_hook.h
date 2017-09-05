@@ -1,4 +1,4 @@
-// $Id: vcs_hook.h,v 1.1 2003/08/12 12:01:06 starvik Exp $
+// $Id: vcs_hook.h,v 1.1.1.1 2010/10/11 06:16:29 nelon Exp $
 //
 // Call simulator hook functions
 

@@ -32,7 +32,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id: ib_user_verbs.h 4019 2005-11-11 00:33:09Z sean.hefty $
+ * $Id: ib_user_verbs.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  */
 
 #ifndef IB_USER_VERBS_H

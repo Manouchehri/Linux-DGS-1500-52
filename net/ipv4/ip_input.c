@@ -5,7 +5,7 @@
  *
  *		The Internet Protocol (IP) module.
  *
- * Version:	$Id: ip_input.c,v 1.55 2002/01/12 07:39:45 davem Exp $
+ * Version:	$Id: ip_input.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  * Authors:	Ross Biro
  *		Fred N. van Kempen, <waltje@uWalt.NL.Mugnet.ORG>

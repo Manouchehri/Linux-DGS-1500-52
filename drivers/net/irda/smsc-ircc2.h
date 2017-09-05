@@ -1,5 +1,5 @@
 /*********************************************************************
- * $Id: smsc-ircc2.h,v 1.12.2.1 2002/10/27 10:52:37 dip Exp $
+ * $Id: smsc-ircc2.h,v 1.1.1.1 2010/10/11 06:16:47 nelon Exp $
  *
  * Description:   Definitions for the SMC IrCC chipset
  * Status:        Experimental.

@@ -266,6 +266,13 @@ void show_regs(struct pt_regs * regs)
 	__backtrace();
 }
 
+#ifdef CAMEO_STACKTRACE_WANTED
+void Cameo_show_briefmsg(struct pt_regs * regs)
+{
+    printk("\n****** Segmentation Fault ******\nPid: %d, pc : %08lx, lr : %08lx\n", current->pid, regs->ARM_pc, regs->ARM_lr);
+}
+#endif /* end of CAMEO_STACKTRACE_WANTED */
+
 void show_fpregs(struct user_fp *regs)
 {
 	int i;

@@ -5,7 +5,7 @@
  *
  *		The Internet Protocol (IP) output module.
  *
- * Version:	$Id: ip_output.c,v 1.100 2002/02/01 22:01:03 davem Exp $
+ * Version:	$Id: ip_output.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  * Authors:	Ross Biro
  *		Fred N. van Kempen, <waltje@uWalt.NL.Mugnet.ORG>
@@ -732,23 +732,15 @@ static inline int ip_ufo_append_data(struct sock *sk,
 		skb->ip_summed = CHECKSUM_PARTIAL;
 		skb->csum = 0;
 		sk->sk_sndmsg_off = 0;
+
+                /* specify the length of each IP datagram fragment*/
+                skb_shinfo(skb)->gso_size = mtu - fragheaderlen;
+                skb_shinfo(skb)->gso_type = SKB_GSO_UDP;
+                __skb_queue_tail(&sk->sk_write_queue, skb);
 	}
 
-	err = skb_append_datato_frags(sk,skb, getfrag, from,
+	return skb_append_datato_frags(sk,skb, getfrag, from,
 			       (length - transhdrlen));
-	if (!err) {
-		/* specify the length of each IP datagram fragment*/
-		skb_shinfo(skb)->gso_size = mtu - fragheaderlen;
-		skb_shinfo(skb)->gso_type = SKB_GSO_UDP;
-		__skb_queue_tail(&sk->sk_write_queue, skb);
-
-		return 0;
-	}
-	/* There is not enough support do UFO ,
-	 * so follow normal path
-	 */
-	kfree_skb(skb);
-	return err;
 }
 
 /*
@@ -842,8 +834,9 @@ int ip_append_data(struct sock *sk,
 		csummode = CHECKSUM_PARTIAL;
 
 	inet->cork.length += length;
-	if (((length > mtu) && (sk->sk_protocol == IPPROTO_UDP)) &&
-			(rt->u.dst.dev->features & NETIF_F_UFO)) {
+	if (((length > mtu) || !skb_queue_empty(&sk->sk_write_queue)) && 
+	    (sk->sk_protocol == IPPROTO_UDP) &&
+	    (rt->u.dst.dev->features & NETIF_F_UFO)) {
 
 		err = ip_ufo_append_data(sk, getfrag, from, length, hh_len,
 					 fragheaderlen, transhdrlen, mtu,

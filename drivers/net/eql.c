@@ -29,6 +29,9 @@
 
 /*
  * $Log: eql.c,v $
+ * Revision 1.1.1.1  2010/10/11 06:16:46  nelon
+ * no message
+ *
  * Revision 1.2  1996/04/11 17:51:52  guru
  * Added one-line eql_remove_slave patch.
  *

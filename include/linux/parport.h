@@ -1,4 +1,4 @@
-/* $Id: parport.h,v 1.1 1998/05/17 10:57:52 andrea Exp andrea $ */
+/* $Id: parport.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $ */
 
 /*
  * Any part of this program may be used in documents licensed under

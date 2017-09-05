@@ -9,7 +9,7 @@ NAME = Holy Dancing Manatees, Batman!
 # More info can be located in ./README
 # Comments in this file are targeted only to the developer, do not
 # expect to learn how to build the kernel reading this file.
-
+	
 # Do not:
 # o  use make's built-in rules and variables
 #    (this increases performance and avoid hard-to-debug behavour);
@@ -182,8 +182,9 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ \
 # Default value for CROSS_COMPILE is not to prefix executables
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 
-ARCH		?= $(SUBARCH)
-CROSS_COMPILE	?=
+#ARCH		?= $(SUBARCH)
+#CROSS_COMPILE	?=
+ARCH		?= arm
 
 # Architecture as present in compile.h
 UTS_MACHINE := $(ARCH)
@@ -481,6 +482,12 @@ endif # $(dot-config)
 # This allow a user to issue only 'make' to build a kernel including modules
 # Defaults vmlinux but it is usually overridden in the arch makefile
 all: vmlinux
+
+ifdef CONFIG_CPU_BIG_ENDIAN
+CROSS_COMPILE=armeb-none-linux-gnueabi-
+else
+CROSS_COMPILE=arm-none-linux-gnueabi-
+endif
 
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 CFLAGS		+= -Os

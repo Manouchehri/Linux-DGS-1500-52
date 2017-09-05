@@ -36,7 +36,7 @@
  * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGES.
  *
- * $Id$
+ * $Id: aic7xxx_pci.h,v 1.1.1.1 2010/10/11 06:16:43 nelon Exp $
  *
  */
 #ifndef _AIC7XXX_PCI_H_

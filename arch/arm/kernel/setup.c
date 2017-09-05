@@ -23,6 +23,7 @@
 #include <linux/cpu.h>
 #include <linux/interrupt.h>
 #include <linux/smp.h>
+#include <linux/fs.h>
 
 #include <asm/cpu.h>
 #include <asm/elf.h>
@@ -41,6 +42,28 @@
 #ifndef MEM_SIZE
 #define MEM_SIZE	(16*1024*1024)
 #endif
+
+//#define MV_HIGH_MEMORY_RESERVE 16*1024*1024;
+//#define MV_HIGH_MEMORY_RESERVE 8*1024*1024;
+#define MV_HIGH_MEMORY_RESERVE 4*1024*1024;
+
+unsigned long mv_high_memory_paddr;
+unsigned long mv_high_memory_paddr_top;
+unsigned long mv_high_memory_vaddr;
+unsigned long mv_high_memory_vaddr_top;
+unsigned long mv_high_memory_vaddr_minus_paddr;
+unsigned long mv_high_memory_paddr_minus_vaddr;
+unsigned long mv_high_memory_len   = MV_HIGH_MEMORY_RESERVE;
+unsigned long mv_real_memory;
+
+EXPORT_SYMBOL(mv_high_memory_paddr);
+EXPORT_SYMBOL(mv_high_memory_paddr_top);
+EXPORT_SYMBOL(mv_high_memory_vaddr);
+EXPORT_SYMBOL(mv_high_memory_vaddr_top);
+EXPORT_SYMBOL(mv_high_memory_vaddr_minus_paddr);
+EXPORT_SYMBOL(mv_high_memory_paddr_minus_vaddr);
+EXPORT_SYMBOL(mv_high_memory_len);
+EXPORT_SYMBOL(mv_real_memory);
 
 #if defined(CONFIG_FPE_NWFPE) || defined(CONFIG_FPE_FASTFPE)
 char fpe_type[8];
@@ -62,6 +85,8 @@ extern void _stext, _text, _etext, __data_start, _edata, _end;
 unsigned int processor_id;
 unsigned int __machine_arch_type;
 EXPORT_SYMBOL(__machine_arch_type);
+
+unsigned int __atags_pointer __initdata;
 
 unsigned int system_rev;
 EXPORT_SYMBOL(system_rev);
@@ -444,7 +469,9 @@ static void __init arm_add_memory(unsigned long start, unsigned long size)
 	 * Ensure that start/size are aligned to a page boundary.
 	 * Size is appropriately rounded down, start is rounded up.
 	 */
-	size -= start & ~PAGE_MASK;
+       if(size != 0) /* overcome bug in U-Boot */
+               size -= start & ~PAGE_MASK;
+
 
 	bank = &meminfo.bank[meminfo.nr_banks++];
 
@@ -561,20 +588,32 @@ request_standard_resources(struct meminfo *mi, struct machine_desc *mdesc)
 		res->end   = __virt_to_phys(virt_end);
 		res->flags = IORESOURCE_MEM | IORESOURCE_BUSY;
 
-		request_resource(&iomem_resource, res);
-
+		if (request_resource(&iomem_resource, res))
+		{	
+  			printk ("IO Request resource failed\n");
+  		}
 		if (kernel_code.start >= res->start &&
 		    kernel_code.end <= res->end)
-			request_resource(res, &kernel_code);
+			if(request_resource(res, &kernel_code))
+			{	
+	  			printk ("IO Request resource failed\n");
+  			}
+
 		if (kernel_data.start >= res->start &&
 		    kernel_data.end <= res->end)
-			request_resource(res, &kernel_data);
+			if( request_resource(res, &kernel_data))
+			{	
+	  			printk ("IO Request resource failed\n");
+  			}
 	}
 
 	if (mdesc->video_start) {
 		video_ram.start = mdesc->video_start;
 		video_ram.end   = mdesc->video_end;
-		request_resource(&iomem_resource, &video_ram);
+		if(request_resource(&iomem_resource, &video_ram))
+		{	
+  			printk ("IO Request resource failed\n");
+		}
 	}
 
 	/*
@@ -582,11 +621,20 @@ request_standard_resources(struct meminfo *mi, struct machine_desc *mdesc)
 	 * possessing lp0, lp1 or lp2
 	 */
 	if (mdesc->reserve_lp0)
-		request_resource(&ioport_resource, &lp0);
+		if(request_resource(&ioport_resource, &lp0))
+		{	
+  			printk ("IO Request resource failed\n");
+		}
 	if (mdesc->reserve_lp1)
-		request_resource(&ioport_resource, &lp1);
+		if(request_resource(&ioport_resource, &lp1))
+		{	
+  			printk ("IO Request resource failed\n");
+		}
 	if (mdesc->reserve_lp2)
-		request_resource(&ioport_resource, &lp2);
+		if(request_resource(&ioport_resource, &lp2))
+		{	
+  			printk ("IO Request resource failed\n");
+		}
 }
 
 /*
@@ -613,13 +661,40 @@ __tagtable(ATAG_CORE, parse_tag_core);
 
 static int __init parse_tag_mem32(const struct tag *tag)
 {
+        unsigned long temp1;
 	if (meminfo.nr_banks >= NR_BANKS) {
 		printk(KERN_WARNING
 		       "Ignoring memory bank 0x%08x size %dKB\n",
 			tag->u.mem.start, tag->u.mem.size / 1024);
 		return -EINVAL;
 	}
-	arm_add_memory(tag->u.mem.start, tag->u.mem.size);
+        if (tag->u.mem.size > 0)
+        {
+                mv_real_memory = tag->u.mem.size;
+                temp1 = tag->u.mem.size - mv_high_memory_len;
+                mv_high_memory_paddr = tag->u.mem.start + temp1;
+                
+                mv_high_memory_paddr_top = 
+                  mv_high_memory_paddr + mv_high_memory_len;
+                
+                mv_high_memory_vaddr = mv_high_memory_paddr | 0xe0000000;
+                
+                mv_high_memory_vaddr_top = 
+                  mv_high_memory_vaddr + mv_high_memory_len;
+
+                mv_high_memory_vaddr_minus_paddr = 
+                  mv_high_memory_vaddr - mv_high_memory_paddr;
+
+                mv_high_memory_paddr_minus_vaddr = 
+                  mv_high_memory_paddr - mv_high_memory_vaddr;
+                  
+                arm_add_memory(tag->u.mem.start, temp1);
+        }
+        else
+        {
+                // let them add zero memory. it's none of my business !
+                arm_add_memory(tag->u.mem.start, tag->u.mem.size);
+        }
 	return 0;
 }
 
@@ -780,7 +855,9 @@ void __init setup_arch(char **cmdline_p)
 	if (mdesc->soft_reboot)
 		reboot_setup("s");
 
-	if (mdesc->boot_params)
+	if (__atags_pointer)
+		tags = phys_to_virt(__atags_pointer);
+	else if (mdesc->boot_params)
 		tags = phys_to_virt(mdesc->boot_params);
 
 	/*

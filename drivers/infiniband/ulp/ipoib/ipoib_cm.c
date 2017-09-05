@@ -29,7 +29,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id$
+ * $Id: ipoib_cm.c,v 1.1.1.1 2010/10/11 06:16:41 nelon Exp $
  */
 
 #include <rdma/ib_cm.h>

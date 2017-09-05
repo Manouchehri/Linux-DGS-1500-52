@@ -24,11 +24,7 @@
 #include <net/netfilter/nf_nat_core.h>
 #include <net/netfilter/nf_nat_rule.h>
 
-#if 0
-#define DEBUGP printk
-#else
 #define DEBUGP(format, args...)
-#endif
 
 #define NAT_VALID_HOOKS ((1<<NF_IP_PRE_ROUTING) | (1<<NF_IP_POST_ROUTING) | (1<<NF_IP_LOCAL_OUT))
 
@@ -147,7 +143,6 @@ static int ipt_snat_checkentry(const char *tablename,
 			       unsigned int hook_mask)
 {
 	struct nf_nat_multi_range_compat *mr = targinfo;
-
 	/* Must be a valid range */
 	if (mr->rangesize != 1) {
 		printk("SNAT: multiple ranges no longer supported\n");
@@ -163,7 +158,6 @@ static int ipt_dnat_checkentry(const char *tablename,
 			       unsigned int hook_mask)
 {
 	struct nf_nat_multi_range_compat *mr = targinfo;
-
 	/* Must be a valid range */
 	if (mr->rangesize != 1) {
 		printk("DNAT: multiple ranges no longer supported\n");

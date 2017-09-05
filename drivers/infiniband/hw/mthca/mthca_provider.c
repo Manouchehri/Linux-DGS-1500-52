@@ -33,7 +33,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id: mthca_provider.c 4859 2006-01-09 21:55:10Z roland $
+ * $Id: mthca_provider.c,v 1.1.1.1 2010/10/11 06:16:41 nelon Exp $
  */
 
 #include <rdma/ib_smi.h>

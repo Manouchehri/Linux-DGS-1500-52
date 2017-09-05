@@ -1,4 +1,4 @@
-/* $Id: bbc_i2c.c,v 1.2 2001/04/02 09:59:08 davem Exp $
+/* $Id: bbc_i2c.c,v 1.1.1.1 2010/10/11 06:16:39 nelon Exp $
  * bbc_i2c.c: I2C low-level driver for BBC device on UltraSPARC-III
  *            platforms.
  *

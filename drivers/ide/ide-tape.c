@@ -3,7 +3,7 @@
  *
  * Copyright (C) 1995 - 1999 Gadi Oxman <gadio@netvision.net.il>
  *
- * $Header$
+ * $Header: /mvista/lsp/mvl-xcat/linux-2.6.22.18-LSP3.4-Official-Release/drivers/ide/ide-tape.c,v 1.1.1.1 2010/10/11 06:16:41 nelon Exp $
  *
  * This driver was constructed as a student project in the software laboratory
  * of the faculty of electrical engineering in the Technion - Israel's

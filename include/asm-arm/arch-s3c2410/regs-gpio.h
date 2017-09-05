@@ -12,7 +12,7 @@
 
 
 #ifndef __ASM_ARCH_REGS_GPIO_H
-#define __ASM_ARCH_REGS_GPIO_H "$Id: gpio.h,v 1.5 2003/05/19 12:51:08 ben Exp $"
+#define __ASM_ARCH_REGS_GPIO_H "$Id: regs-gpio.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $"
 
 #define S3C2410_GPIONO(bank,offset) ((bank) + (offset))
 

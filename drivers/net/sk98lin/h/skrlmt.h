@@ -2,14 +2,15 @@
  *
  * Name:	skrlmt.h
  * Project:	GEnesis, PCI Gigabit Ethernet Adapter
- * Version:	$Revision: 1.37 $
- * Date:	$Date: 2003/04/15 09:43:43 $
+ * Version:	$Revision: 1.1.1.1 $
+ * Date:	$Date: 2010/10/11 06:16:48 $
  * Purpose:	Header file for Redundant Link ManagemenT.
  *
  ******************************************************************************/
 
 /******************************************************************************
  *
+ *	LICENSE:
  *	(C)Copyright 1998-2002 SysKonnect GmbH.
  *	(C)Copyright 2002-2003 Marvell.
  *
@@ -19,6 +20,7 @@
  *	(at your option) any later version.
  *
  *	The information in this file is provided "AS IS" without warranty.
+ *	/LICENSE
  *
  ******************************************************************************/
 
@@ -151,15 +153,6 @@ extern "C" {
 
 /* Macros */
 
-#if 0
-SK_AC		*pAC		/* adapter context */
-SK_U32		PortNum		/* receiving port */
-unsigned	PktLen		/* received packet's length */
-SK_BOOL		IsBc		/* Flag: packet is broadcast */
-unsigned	*pOffset	/* offs. of bytes to present to SK_RLMT_LOOKAHEAD */
-unsigned	*pNumBytes	/* #Bytes to present to SK_RLMT_LOOKAHEAD */
-#endif	/* 0 */
-
 #define SK_RLMT_PRE_LOOKAHEAD(pAC,PortNum,PktLen,IsBc,pOffset,pNumBytes) { \
 	SK_AC	*_pAC; \
 	SK_U32	_PortNum; \
@@ -195,21 +188,6 @@ unsigned	*pNumBytes	/* #Bytes to present to SK_RLMT_LOOKAHEAD */
     	} \
     } \
 }
-
-#if 0
-SK_AC		*pAC		/* adapter context */
-SK_U32		PortNum		/* receiving port */
-SK_U8		*pLaPacket,	/* received packet's data (points to pOffset) */
-SK_BOOL		IsBc		/* Flag: packet is broadcast */
-SK_BOOL		IsMc		/* Flag: packet is multicast */
-unsigned	*pForRlmt	/* Result: bits SK_RLMT_RX_RLMT, SK_RLMT_RX_PROTOCOL */
-SK_RLMT_LOOKAHEAD() expects *pNumBytes from
-packet offset *pOffset (s.a.) at *pLaPacket.
-
-If you use SK_RLMT_LOOKAHEAD in a path where you already know if the packet is
-BC, MC, or UC, you should use constants for IsBc and IsMc, so that your compiler
-can trash unneeded parts of the if construction.
-#endif	/* 0 */
 
 #define SK_RLMT_LOOKAHEAD(pAC,PortNum,pLaPacket,IsBc,IsMc,pForRlmt) { \
 	SK_AC	*_pAC; \
@@ -391,9 +369,12 @@ typedef struct s_Rlmt {
 
 /* ----- Private part ----- */
 	SK_BOOL			CheckSwitch;
-	SK_BOOL			RlmtOff;            /* set to zero if the Mac addresses 
-                                           are equal or the second one 
-                                           is zero */
+	SK_BOOL			RlmtOff;			/* set to non zero value if:
+										 * - Mac addresses are equal
+										 * - second MAC address is zero
+										 * - it is a single link adapter
+										 * - adapter is in DualNet mode
+										 */
 	SK_U16			Align01;
 
 } SK_RLMT;

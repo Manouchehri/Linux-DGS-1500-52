@@ -1,7 +1,7 @@
 #
 # linux/drivers/maps/Makefile
 #
-# $Id: Makefile.common,v 1.34 2005/11/07 11:14:26 gleixner Exp $
+# $Id: Makefile,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
 
 ifeq ($(CONFIG_MTD_COMPLEX_MAPPINGS),y)
 obj-$(CONFIG_MTD)		+= map_funcs.o
@@ -72,3 +72,18 @@ obj-$(CONFIG_MTD_PLATRAM)	+= plat-ram.o
 obj-$(CONFIG_MTD_OMAP_NOR)	+= omap_nor.o
 obj-$(CONFIG_MTD_MTX1)		+= mtx-1_flash.o
 obj-$(CONFIG_MTD_TQM834x)	+= tqm834x.o
+
+obj-$(CONFIG_MTD)               += flashmap.o
+ifeq ($(CONFIG_ARCH_FEROCEON_ORION),y)
+	include $(TOPDIR)/arch/arm/mach-feroceon-orion/config/mvRules.mk
+	flashmap-objs = ../../../arch/arm/mach-feroceon-orion/flashmap.o
+endif
+ifeq ($(CONFIG_ARCH_FEROCEON_KW),y)
+	include $(TOPDIR)/arch/arm/mach-feroceon-kw/config/mvRules.mk
+	flashmap-objs = ../../../arch/arm/mach-feroceon-kw/flashmap.o
+endif
+ifeq ($(CONFIG_ARCH_FEROCEON_MV78XX0),y)
+	include $(TOPDIR)/arch/arm/mach-feroceon-mv78xx0/config/mvRules.mk
+	flashmap-objs = ../../../arch/arm/mach-feroceon-mv78xx0/flashmap.o
+endif
+

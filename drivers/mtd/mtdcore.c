@@ -1,5 +1,5 @@
 /*
- * $Id: mtdcore.c,v 1.47 2005/11/07 11:14:20 gleixner Exp $
+ * $Id: mtdcore.c,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
  *
  * Core registration and callback routines for MTD
  * drivers and users.

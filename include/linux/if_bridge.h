@@ -4,7 +4,7 @@
  *	Authors:
  *	Lennert Buytenhek		<buytenh@gnu.org>
  *
- *	$Id: if_bridge.h,v 1.1 2000/02/18 16:47:01 davem Exp $
+ *	$Id: if_bridge.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  *
  *	This program is free software; you can redistribute it and/or
  *	modify it under the terms of the GNU General Public License

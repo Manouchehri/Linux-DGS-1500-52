@@ -1,5 +1,5 @@
 /*
- * $Id: setup.c,v 1.4 2003/08/03 03:05:10 lethal Exp $
+ * $Id: setup.c,v 1.1.1.1 2010/10/11 06:16:30 nelon Exp $
  *
  * Setup and IRQ handling code for the HD64465 companion chip.
  * by Greg Banks <gbanks@pocketpenguins.com>

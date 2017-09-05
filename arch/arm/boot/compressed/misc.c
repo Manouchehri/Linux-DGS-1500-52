@@ -18,7 +18,11 @@
 
 unsigned int __machine_arch_type;
 
-#include <linux/string.h>
+
+/*#include <linux/string.h>*/
+#define NULL        ((void *) 0)
+#define size_t    unsigned int
+#define memzero(p,n) ({ if ((n) != 0) __memzero((p),(n)); (p); })
 
 #ifdef STANDALONE_DEBUG
 #define putstr printf
@@ -69,6 +73,7 @@ static void icedcc_putc(int ch)
 #define flush()	do { } while (0)
 #endif
 
+#ifndef CONFIG_ARCH_FEROCEON
 static void putstr(const char *ptr)
 {
 	char c;
@@ -81,6 +86,7 @@ static void putstr(const char *ptr)
 
 	flush();
 }
+#endif
 
 #endif
 
@@ -322,7 +328,9 @@ void flush_window(void)
 	bytes_out += (ulg)outcnt;
 	output_ptr += (ulg)outcnt;
 	outcnt = 0;
+#ifndef CAMEO_SIMPLE_DISPLAY
 	putstr(".");
+#endif  /* end of CAMEO_SIMPLE_DISPLAY */
 }
 
 #ifndef arch_error
@@ -354,9 +362,15 @@ decompress_kernel(ulg output_start, ulg free_mem_ptr_p, ulg free_mem_ptr_end_p,
 	arch_decomp_setup();
 
 	makecrc();
+#ifdef CAMEO_SIMPLE_DISPLAY
+	putstr(".");
+	gunzip();
+	putstr(".");
+#else
 	putstr("Uncompressing Linux...");
 	gunzip();
 	putstr(" done, booting the kernel.\n");
+#endif  /* end of CAMEO_SIMPLE_DISPLAY */
 	return output_ptr;
 }
 #else

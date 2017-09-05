@@ -1,4 +1,4 @@
-/* $Id: mul.S,v 1.4 1996/09/30 02:22:32 davem Exp $
+/* $Id: mul.S,v 1.1.1.1 2010/10/11 06:16:30 nelon Exp $
  * mul.S:       This routine was taken from glibc-1.09 and is covered
  *              by the GNU Library General Public License Version 2.
  */

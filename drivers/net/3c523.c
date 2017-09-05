@@ -84,7 +84,7 @@
    Nov 2001
    added support for ethtool (jgarzik)
 
-   $Header: /fsys2/home/chrisb/linux-1.3.59-MCA/drivers/net/RCS/3c523.c,v 1.1 1996/02/05 01:53:46 chrisb Exp chrisb $
+   $Header: /mvista/lsp/mvl-xcat/linux-2.6.22.18-LSP3.4-Official-Release/drivers/net/3c523.c,v 1.1.1.1 2010/10/11 06:16:47 nelon Exp $
  */
 
 #define DRV_NAME		"3c523"

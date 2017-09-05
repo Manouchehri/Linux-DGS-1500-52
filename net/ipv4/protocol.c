@@ -5,7 +5,7 @@
  *
  *		INET protocol dispatch tables.
  *
- * Version:	$Id: protocol.c,v 1.14 2001/05/18 02:25:49 davem Exp $
+ * Version:	$Id: protocol.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  * Authors:	Ross Biro
  *		Fred N. van Kempen, <waltje@uWalt.NL.Mugnet.ORG>

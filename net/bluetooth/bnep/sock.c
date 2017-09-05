@@ -25,7 +25,7 @@
 */
 
 /*
- * $Id: sock.c,v 1.4 2002/08/04 21:23:58 maxk Exp $
+ * $Id: sock.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  */
 
 #include <linux/module.h>

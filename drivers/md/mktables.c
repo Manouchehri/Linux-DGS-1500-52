@@ -1,4 +1,4 @@
-#ident "$Id: mktables.c,v 1.2 2002/12/12 22:41:27 hpa Exp $"
+#ident "$Id: mktables.c,v 1.1.1.1 2010/10/11 06:16:40 nelon Exp $"
 /* ----------------------------------------------------------------------- *
  *
  *   Copyright 2002 H. Peter Anvin - All Rights Reserved

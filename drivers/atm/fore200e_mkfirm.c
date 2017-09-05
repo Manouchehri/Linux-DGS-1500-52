@@ -1,5 +1,5 @@
 /*
-  $Id: fore200e_mkfirm.c,v 1.1 2000/02/21 16:04:32 davem Exp $
+  $Id: fore200e_mkfirm.c,v 1.1.1.1 2010/10/11 06:16:46 nelon Exp $
 
   mkfirm.c: generates a C readable file from a binary firmware image
 

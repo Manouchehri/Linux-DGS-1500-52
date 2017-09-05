@@ -37,7 +37,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id: iscsi_iser.h 7051 2006-05-10 12:29:11Z ogerlitz $
+ * $Id: iscsi_iser.h,v 1.1.1.1 2010/10/11 06:16:41 nelon Exp $
  */
 #ifndef __ISCSI_ISER_H__
 #define __ISCSI_ISER_H__

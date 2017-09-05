@@ -1,5 +1,5 @@
 /*
- * $Id:  $
+ * $Id: mainstone-flash.c,v 1.1.1.1 2010/10/11 06:16:45 nelon Exp $
  *
  * Map driver for the Mainstone developer platform.
  *

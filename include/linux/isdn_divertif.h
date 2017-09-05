@@ -1,4 +1,4 @@
-/* $Id: isdn_divertif.h,v 1.4.6.1 2001/09/23 22:25:05 kai Exp $
+/* $Id: isdn_divertif.h,v 1.1.1.1 2010/10/11 06:16:34 nelon Exp $
  *
  * Header for the diversion supplementary interface for i4l.
  *

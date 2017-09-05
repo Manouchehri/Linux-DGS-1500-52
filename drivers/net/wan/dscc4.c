@@ -108,7 +108,7 @@
 #include <linux/mutex.h>
 
 /* Version */
-static const char version[] = "$Id: dscc4.c,v 1.173 2003/09/20 23:55:34 romieu Exp $ for Linux\n";
+static const char version[] = "$Id: dscc4.c,v 1.1.1.1 2010/10/11 06:16:48 nelon Exp $ for Linux\n";
 static int debug;
 static int quartz;
 

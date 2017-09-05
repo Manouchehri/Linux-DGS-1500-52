@@ -1,4 +1,4 @@
-/*  $Id: signal.c,v 1.60 2002/02/09 19:49:31 davem Exp $
+/*  $Id: signal.c,v 1.1.1.1 2010/10/11 06:16:32 nelon Exp $
  *  arch/sparc64/kernel/signal.c
  *
  *  Copyright (C) 1991, 1992  Linus Torvalds

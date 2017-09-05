@@ -6,6 +6,9 @@
  *  Authors:  Bjorn Wesen 
  * 
  *  $Log: fault.c,v $
+ *  Revision 1.1.1.1  2010/10/11 06:16:29  nelon
+ *  no message
+ *
  *  Revision 1.20  2005/03/04 08:16:18  starvik
  *  Merge of Linux 2.6.11.
  *

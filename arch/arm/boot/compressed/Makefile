@@ -78,6 +78,10 @@ targets       := vmlinux vmlinux.lds piggy.gz piggy.o $(FONT) \
 EXTRA_CFLAGS  := -fpic
 EXTRA_AFLAGS  :=
 
+ifeq ($(SIMPLE_DISPLAY),YES)
+EXTRA_CFLAGS += -DCAMEO_SIMPLE_DISPLAY
+endif
+
 # Supply ZRELADDR, INITRD_PHYS and PARAMS_PHYS to the decompressor via
 # linker symbols.  We only define initrd_phys and params_phys if the
 # machine class defined the corresponding makefile variable.

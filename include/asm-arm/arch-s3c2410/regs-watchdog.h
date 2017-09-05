@@ -12,7 +12,7 @@
 
 
 #ifndef __ASM_ARCH_REGS_WATCHDOG_H
-#define __ASM_ARCH_REGS_WATCHDOG_H "$Id: watchdog.h,v 1.2 2003/04/29 13:31:09 ben Exp $"
+#define __ASM_ARCH_REGS_WATCHDOG_H "$Id: regs-watchdog.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $"
 
 #define S3C2410_WDOGREG(x) ((x) + S3C24XX_VA_WATCHDOG)
 

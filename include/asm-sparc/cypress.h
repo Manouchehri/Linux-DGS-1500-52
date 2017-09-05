@@ -1,4 +1,4 @@
-/* $Id: cypress.h,v 1.6 1996/08/29 09:48:09 davem Exp $
+/* $Id: cypress.h,v 1.1.1.1 2010/10/11 06:16:33 nelon Exp $
  * cypress.h: Cypress module specific definitions and defines.
  *
  * Copyright (C) 1995 David S. Miller (davem@caip.rutgers.edu)

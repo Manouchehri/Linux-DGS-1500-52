@@ -4,7 +4,7 @@
  *	Authors:
  *	Lennert Buytenhek		<buytenh@gnu.org>
  *
- *	$Id: br_private_stp.h,v 1.3 2001/02/05 06:03:47 davem Exp $
+ *	$Id: br_private_stp.h,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  *	This program is free software; you can redistribute it and/or
  *	modify it under the terms of the GNU General Public License

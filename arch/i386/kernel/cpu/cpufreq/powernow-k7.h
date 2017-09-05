@@ -1,5 +1,5 @@
 /*
- *  $Id: powernow-k7.h,v 1.2 2003/02/10 18:26:01 davej Exp $
+ *  $Id: powernow-k7.h,v 1.1.1.1 2010/10/11 06:16:29 nelon Exp $
  *  (C) 2003 Dave Jones.
  *
  *  Licensed under the terms of the GNU GPL License version 2.

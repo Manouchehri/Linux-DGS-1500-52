@@ -47,7 +47,7 @@
  *   Converted file reading routine to dump to buffer once
  *   per device, not per bus
  *
- * $Id: devices.c,v 1.5 2000/01/11 13:58:21 tom Exp $
+ * $Id: devices.c,v 1.1.1.1 2010/10/11 06:16:44 nelon Exp $
  */
 
 #include <linux/fs.h>

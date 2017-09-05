@@ -1,5 +1,5 @@
 /*
- * $Id: pc110pad.c,v 1.12 2001/09/25 10:12:07 vojtech Exp $
+ * $Id: pc110pad.c,v 1.1.1.1 2010/10/11 06:16:43 nelon Exp $
  *
  *  Copyright (c) 2000-2001 Vojtech Pavlik
  *

@@ -1,7 +1,7 @@
 /* Driver for USB Mass Storage compliant devices
  * Main Header File
  *
- * $Id: usb.h,v 1.21 2002/04/21 02:57:59 mdharm Exp $
+ * $Id: usb.h,v 1.1.1.1 2010/10/11 06:16:44 nelon Exp $
  *
  * Current development and maintenance by:
  *   (c) 1999-2002 Matthew Dharm (mdharm-usb@one-eyed-alien.net)

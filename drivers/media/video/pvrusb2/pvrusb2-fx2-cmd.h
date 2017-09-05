@@ -1,6 +1,6 @@
 /*
  *
- *  $Id$
+ *  $Id: pvrusb2-fx2-cmd.h,v 1.1.1.1 2010/10/11 06:16:41 nelon Exp $
  *
  *  Copyright (C) 2007 Michael Krufky <mkrufky@linuxtv.org>
  *

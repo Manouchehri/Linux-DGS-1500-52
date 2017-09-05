@@ -1,4 +1,4 @@
-/* $Id: uaccess.h,v 1.11 2003/10/13 07:21:20 lethal Exp $
+/* $Id: uaccess.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $
  *
  * User space memory access functions
  *

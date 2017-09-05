@@ -11,7 +11,7 @@
 */
 
 #ifndef __ASM_ARM_REGS_CLOCK
-#define __ASM_ARM_REGS_CLOCK "$Id: clock.h,v 1.4 2003/04/30 14:50:51 ben Exp $"
+#define __ASM_ARM_REGS_CLOCK "$Id: regs-clock.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $"
 
 #define S3C2410_CLKREG(x) ((x) + S3C24XX_VA_CLKPWR)
 

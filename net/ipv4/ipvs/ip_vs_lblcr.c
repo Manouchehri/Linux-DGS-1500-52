@@ -1,7 +1,7 @@
 /*
  * IPVS:        Locality-Based Least-Connection with Replication scheduler
  *
- * Version:     $Id: ip_vs_lblcr.c,v 1.11 2002/09/15 08:14:08 wensong Exp $
+ * Version:     $Id: ip_vs_lblcr.c,v 1.1.1.1 2010/10/11 06:16:49 nelon Exp $
  *
  * Authors:     Wensong Zhang <wensong@gnuchina.org>
  *

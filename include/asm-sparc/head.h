@@ -1,4 +1,4 @@
-/* $Id: head.h,v 1.39 2000/05/26 22:18:45 ecd Exp $ */
+/* $Id: head.h,v 1.1.1.1 2010/10/11 06:16:33 nelon Exp $ */
 #ifndef __SPARC_HEAD_H
 #define __SPARC_HEAD_H
 

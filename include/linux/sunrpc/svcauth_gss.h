@@ -4,7 +4,7 @@
  * Bruce Fields <bfields@umich.edu>
  * Copyright (c) 2002 The Regents of the Unviersity of Michigan
  *
- * $Id$
+ * $Id: svcauth_gss.h,v 1.1.1.1 2010/10/11 06:16:35 nelon Exp $
  *
  */
 

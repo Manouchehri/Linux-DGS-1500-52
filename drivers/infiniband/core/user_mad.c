@@ -31,7 +31,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * $Id: user_mad.c 5596 2006-03-03 01:00:07Z sean.hefty $
+ * $Id: user_mad.c,v 1.1.1.1 2010/10/11 06:16:41 nelon Exp $
  */
 
 #include <linux/module.h>

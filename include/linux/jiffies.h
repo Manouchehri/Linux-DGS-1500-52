@@ -134,7 +134,18 @@ static inline u64 get_jiffies_64(void)
  * Have the 32 bit jiffies value wrap 5 minutes after boot
  * so jiffies wrap bugs show up earlier.
  */
+/* @@Cameo, Nelon, 2011/06/10,
+   Modiyf INITIAL_JIFFIES from -300 to 0
+   We have Jiffies overflow issue, 
+   the issue will cause sys_time and sys_up_time no work on device boot up 5 minute.
+   so will modiyf the value from -300 to 0,    
+   but the issue still will happen 1 or 4xx year agaio, base the cpu HZ. 
+*/
+#if 1
+#define INITIAL_JIFFIES ((unsigned long)(unsigned int) (0*HZ))
+#else
 #define INITIAL_JIFFIES ((unsigned long)(unsigned int) (-300*HZ))
+#endif
 
 /*
  * Change timeval to jiffies, trying to avoid the
